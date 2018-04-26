@@ -259,6 +259,9 @@ struct scope_setcolor {
         if( m_os )
             *m_os << setcolor();
     }
+    scope_setcolor(scope_setcolor&& r) : m_os(std::move(r.m_os)) {
+      r.m_os = 0;
+    }
 private:
     scope_setcolor(const scope_setcolor& r);
     scope_setcolor& operator=(const scope_setcolor& r);
@@ -299,10 +302,9 @@ private:
 #endif
 
 #define BOOST_TEST_SCOPE_SETCOLOR( is_color_output, os, attr, color )       \
-    utils::scope_setcolor const sc(                                         \
-              os,                                                           \
-              is_color_output ? utils::attr : utils::term_attr::NORMAL,     \
-              is_color_output ? utils::color : utils::term_color::ORIGINAL);\
+    utils::scope_setcolor const sc = is_color_output ?                      \
+      std::move(utils::scope_setcolor(os, utils::attr, utils::color)) :     \
+      std::move(utils::scope_setcolor()) ; \
     ut_detail::ignore_unused_variable_warning( sc )                         \
 /**/
 
