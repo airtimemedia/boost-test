@@ -275,6 +275,7 @@ register_parameters( rt::parameters_store& store )
             { "CLF", OF_CLF },
             { "XML", OF_XML },
             { "JUNIT", OF_JUNIT },
+            { "CUSTOM", OF_CUSTOM_LOGGER }
         },
 #else
         rt::enum_values_list<unit_test::output_format>()
