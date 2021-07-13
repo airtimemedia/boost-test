@@ -48,6 +48,7 @@ public:
     bool                has_failed( ) const;
 
 private:
+    // airtime: initialize m_has_failure to false (original does not initialize)
     bool m_has_failure = false;
 };
 
