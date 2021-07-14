@@ -270,7 +270,7 @@ private:
 
         // look for match
         // using namespace boost::placeholders;
-        return std::find_if( filters.begin(), filters.end(), bind( &component::pass, _1, boost::ref(tu) ) ) != filters.end();
+        return std::find_if( filters.begin(), filters.end(), bind( &component::pass, placeholders::_1, boost::ref(tu) ) ) != filters.end();
     }
 
     // test_tree_visitor interface
