@@ -34,6 +34,8 @@
 
 #include <boost/test/detail/suppress_warnings.hpp>
 
+#include <boost/version.hpp>
+
 namespace boost {
 namespace runtime {
 namespace cla {
